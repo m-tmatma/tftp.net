@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using Tftp.Net.Transfer;
+using Tftp.Net.Trace;
 
 namespace Tftp.Net
 {
@@ -21,12 +22,14 @@ namespace Tftp.Net
             {
                 return ParseInternal(message);
             }
-            catch (TftpParserException)
+            catch (TftpParserException e)
             {
-                throw;
+                TftpTrace.Trace(e.ToString());
+                throw e;
             }
             catch (Exception e)
             {
+                TftpTrace.Trace(e.ToString());
                 throw new TftpParserException(e);
             }
         }
@@ -115,8 +118,9 @@ namespace Tftp.Net
                 {
                     name = ParseNullTerminatedString(reader);
                 }
-                catch (IOException)
+                catch (IOException e)
                 {
+                    TftpTrace.Trace(e.ToString());
                     name = "";
                 }
 

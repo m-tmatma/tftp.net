@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Net.Sockets;
+using Tftp.Net.Trace;
 
 namespace Tftp.Net
 {
@@ -28,7 +29,10 @@ namespace Tftp.Net
             int nextByte = stream.ReadByte();
 
             if (nextByte == -1)
+            {
+                TftpTrace.Trace("nextByte is -1");
                 throw new IOException();
+            }
 
             return (byte)nextByte;
         }
@@ -39,7 +43,10 @@ namespace Tftp.Net
             int bytesRead = stream.Read(buffer, 0, buffer.Length);
 
             if (bytesRead == -1)
+            {
+                TftpTrace.Trace("bytesRead is -1");
                 throw new IOException();
+            }
 
             Array.Resize(ref buffer, bytesRead);
             return buffer;

@@ -28,5 +28,13 @@ namespace Tftp.Net.Trace
 
             System.Diagnostics.Trace.WriteLine(message, transfer.ToString());
         }
+
+        internal static void Trace(String message)
+        {
+            if (!Enabled)
+                return;
+
+            System.Diagnostics.Trace.WriteLine(message);
+        }
     }
 }

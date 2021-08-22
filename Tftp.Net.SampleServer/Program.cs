@@ -1,10 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
+using Tftp.Net.Trace;
 
 namespace Tftp.Net.SampleServer
 {
@@ -15,6 +16,7 @@ namespace Tftp.Net.SampleServer
         static void Main(string[] args)
         {
             ServerDirectory = Environment.CurrentDirectory;
+            TftpTrace.Enabled = true;
 
             Console.WriteLine("Running TFTP server for directory: " + ServerDirectory);
             Console.WriteLine();

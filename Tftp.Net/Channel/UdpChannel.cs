@@ -6,6 +6,7 @@ using System.Net.Sockets;
 using System.Net;
 using System.IO;
 using System.Diagnostics;
+using Tftp.Net.Trace;
 
 namespace Tftp.Net.Channel
 {
@@ -53,11 +54,14 @@ namespace Tftp.Net.Channel
             }
             catch (SocketException e)
             {
+                TftpTrace.Trace(e.ToString());
+
                 //Handle receive error
                 RaiseOnError(new NetworkError(e));
             }
             catch (TftpParserException e2)
             {
+                TftpTrace.Trace(e2.ToString());
                 //Handle parser error
                 RaiseOnError(new NetworkError(e2));
             }
