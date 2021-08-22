@@ -63,7 +63,7 @@ namespace Tftp.Net.SampleServer
             else
             {
                 OutputTransferStatus(transfer, "Accepting request from " + client);
-                StartTransfer(transfer, new FileStream(file.FullName, FileMode.Open));
+                StartTransfer(transfer, new FileStream(file.FullName, FileMode.Open, FileAccess.Read));
             }
         }
 
