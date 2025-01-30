@@ -122,7 +122,7 @@ namespace Tftp.Net.Transfer
         {
             try
             {
-                ProposedOptions.TransferSize = (int)InputOutputStream.Length;
+                ProposedOptions.TransferSize = InputOutputStream.Length;
             }
             catch (NotSupportedException) { }
             finally
